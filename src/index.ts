@@ -62,23 +62,49 @@ plot(defaultPoint, scaleAnchor1, scaleAnchor2, scaleAnchor3, rotateAnchor, "Scal
 let flippyPoint = math.matrix([1.5, 4.5, 1])
 let flipAxis1 = vec.flipOver(defaultPoint, 1, 1)
 let flipAxis2 = vec.flipOver(flippyPoint, 1, 1)
-plot(defaultPoint, flipAxis1, flippyPoint, flipAxis2, {x: [0, 5], y: [1, 6], mode: 'lines', title: "axis"}, "Flip over any Axis")
+plot(defaultPoint, flipAxis1, flippyPoint, flipAxis2, {x: [0, 5], y: [1, 6], mode: 'lines', title: "axis"}, "Flip over any Axis");
 
 
 
 // Beispiel 5-1: Dreieck
 
-let a = math.matrix([-1, 1, 1])
-let b = math.matrix([4, 2, 1])
-let c = math.matrix([3, 5, 1])
+(() => {
+  let a = math.matrix([-1, 1, 1])
+  let b = math.matrix([4, 2, 1])
+  let c = math.matrix([3, 5, 1])
 
-let deg = -65
+  let deg = -65
 
 
-let aa = vec.rotate(a, deg, b)
-let bb = vec.rotate(b, deg, b)
-let cc = vec.rotate(c, deg, b)
+  let aa = vec.rotate(a, deg, b)
+  let bb = vec.rotate(b, deg, b)
+  let cc = vec.rotate(c, deg, b)
 
-plot([a, b, c], [aa, bb, cc], "Dreieck")
+  plot([a, b, c], [aa, bb, cc], "Dreieck rotate")
+})();
+
+
+
+// Beispiel wdh
+
+(() => {
+  let a = math.matrix([2, 3, 1])
+  let b = math.matrix([4, 5, 1])
+  let c = math.matrix([3, 7, 1])
+
+  let originTrans = math.unaryMinus(c)
+  let backTrans = c
+
+  
+  let aa = vec.translate(vec.flipOver(vec.translate(a, originTrans), "x"), backTrans)
+  let bb = vec.translate(vec.flipOver(vec.translate(b, originTrans), "x"), backTrans)
+  let cc = vec.translate(vec.flipOver(vec.translate(c, originTrans), "x"), backTrans)
+
+  console.log(aa.toString())
+  console.log(bb.toString())
+  console.log(cc.toString())
+
+  plot([a, b, c], [aa, bb, cc], "Dreieck wdh")
+})()
 
 
