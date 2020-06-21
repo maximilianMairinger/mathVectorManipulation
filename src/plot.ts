@@ -51,6 +51,7 @@ export default function plot(...datas: ((number[] | number | math.Matrix)[] | st
       data.add(ob)
     })
     let layout: any = {}
+    //layout.autosize = false
     if (typeof datas.last === "string") layout.title = datas.last
 
     plotly.newPlot(elem, data, layout) 

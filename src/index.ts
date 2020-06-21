@@ -72,8 +72,13 @@ let a = math.matrix([-1, 1, 1])
 let b = math.matrix([4, 2, 1])
 let c = math.matrix([3, 5, 1])
 
-let aa = vec.flipOver(a, new vec.Angle(65))
+let deg = -65
 
-plot([a, b, c], "Dreieck")
+
+let aa = vec.rotate(a, deg, b)
+let bb = vec.rotate(b, deg, b)
+let cc = vec.rotate(c, deg, b)
+
+plot([a, b, c], [aa, bb, cc], "Dreieck")
 
 
