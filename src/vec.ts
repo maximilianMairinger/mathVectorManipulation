@@ -110,9 +110,7 @@ export class Incline {
 }
 
 function toAngle(a: Angle | Incline | inlineIncline) {
-  let rad = typeof a === "number" ? math.atan(a) : a instanceof Incline ? math.atan(a.incline) : a.angle
-  let angle = toCurrentUnit(rad, "rad")
-  return angle
+  return typeof a === "number" ? toCurrentUnit(math.atan(a), "rad") : a instanceof Incline ? toCurrentUnit(math.atan(a.incline), "rad") : a.angle
 }
 
 type inlineIncline = number

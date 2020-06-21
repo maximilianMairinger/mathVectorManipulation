@@ -16,10 +16,11 @@ export default function plot(...datas: ((number[] | number | math.Matrix)[] | st
       if (typeof q === "string") return
       //@ts-ignore
       if (q instanceof math.Matrix) q = q.toArray().flat()
-      else {
+      else if (!(q instanceof Array)) {
         data.add(q)
         return
       }
+      
       let ob: any = {mode: "markers", x: [], y: []}
       let isNestedAnywhere = q.ea((e: any) => {
         if (e.toArray !== undefined) e = e.toArray().flat()

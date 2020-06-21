@@ -45,7 +45,7 @@ let rotateAnchor2 = vec.rotate(defaultPoint, 90, rotateAnchor)
 let rotateAnchor3 = vec.rotate(defaultPoint, 120, rotateAnchor)
 plot(defaultPoint, rotateAnchor1, rotateAnchor2, rotateAnchor3, rotateAnchor, "Rotate Anchor")
 
-
+ 
 
 // Scale anchor
 let scaleAnchor = math.matrix([
@@ -63,5 +63,17 @@ let flippyPoint = math.matrix([1.5, 4.5, 1])
 let flipAxis1 = vec.flipOver(defaultPoint, 1, 1)
 let flipAxis2 = vec.flipOver(flippyPoint, 1, 1)
 plot(defaultPoint, flipAxis1, flippyPoint, flipAxis2, {x: [0, 5], y: [1, 6], mode: 'lines', title: "axis"}, "Flip over any Axis")
+
+
+
+// Beispiel 5-1: Dreieck
+
+let a = math.matrix([-1, 1, 1])
+let b = math.matrix([4, 2, 1])
+let c = math.matrix([3, 5, 1])
+
+let aa = vec.flipOver(a, new vec.Angle(65))
+
+plot([a, b, c], "Dreieck")
 
 
