@@ -1,6 +1,6 @@
 import * as math from "mathjs"
-import util, { toDeg } from "./util"
-let { setAngleUnit, parseInAngle, parseOutAngle } = util()
+import util from "./util"
+let { setAngleUnit, parseInAngle, toCurrentUnit } = util()
 export { setAngleUnit }
 
 
@@ -110,13 +110,15 @@ export class Incline {
 }
 
 function toAngle(a: Angle | Incline | inlineIncline) {
-  return typeof a === "number" ? math.atan(a) : a instanceof Incline ? math.atan(a.incline) : a.angle
+  let rad = typeof a === "number" ? math.atan(a) : a instanceof Incline ? math.atan(a.incline) : a.angle
+  let angle = toCurrentUnit(rad, "rad")
+  return angle
 }
 
 type inlineIncline = number
 export function flipOver(matrix: math.Matrix, over_incline_angle: "x" | "y" | "xy" | Angle | Incline | inlineIncline, yOffset: number = 0) {
   matrix = translate(matrix, 0, -yOffset)
-
+  
   if (typeof over_incline_angle === "string") {
     matrix = math.multiply(flipMatrixIndex[over_incline_angle], matrix)
   }

@@ -59,7 +59,9 @@ plot(defaultPoint, scaleAnchor1, scaleAnchor2, scaleAnchor3, rotateAnchor, "Scal
 
 
 // Flip over any Axis
-let flipAxis1 = vec.flipOver(defaultPoint, 1, 0)
-plot(defaultPoint, flipAxis1, {x: [0, 5], y: [0, 5], mode: 'lines', title: "axis"}, "Flip over any Axis")
+let flippyPoint = math.matrix([1.5, 4.5, 1])
+let flipAxis1 = vec.flipOver(defaultPoint, 1, 1)
+let flipAxis2 = vec.flipOver(flippyPoint, 1, 1)
+plot(defaultPoint, flipAxis1, flippyPoint, flipAxis2, {x: [0, 5], y: [1, 6], mode: 'lines', title: "axis"}, "Flip over any Axis")
 
 

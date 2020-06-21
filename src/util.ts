@@ -15,8 +15,14 @@ export default function init() {
     else return toDeg(angle)
   }
 
+  function toCurrentUnit(angle: number, fromUnit: "rad" | "deg") {
+    if (fromUnit === currentAngleUnit) return angle
+    else if (fromUnit === "rad") return toDeg(angle)
+    else return toRad(angle)
+  }
 
-  return { setAngleUnit, parseInAngle, parseOutAngle }  
+
+  return { setAngleUnit, parseInAngle, parseOutAngle, toCurrentUnit }  
 }
 
 export function toDeg(angle: number) {
