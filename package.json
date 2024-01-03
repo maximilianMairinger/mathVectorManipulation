@@ -11,7 +11,7 @@
     "@types/mathjs": "6.0.5",
     "@types/plotly.js": "1.50.13",
     "mathjs": "7.0.1",
-    "plotly.js": "1.54.3",
+    "plotly.js": "2.25.2",
     "xrray": "4.6.8"
   },
   "devDependencies": {
